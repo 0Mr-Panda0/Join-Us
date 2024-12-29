@@ -8,35 +8,41 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center h-screen" style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center;">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <p class="text-center text-gray-600 mb-4">Join {{ count }} people who have already signed up!</p>
-        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Join Us</h1>
+    <p class="text-center text-2xl text-inherit mb-12 ">Join <b>{{ count }}</b> people who have already signed up!</p>
+    <!--Join Us form-->
+    <div class="p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center text-inherit">Join Us</h1>
         <form class="flex items-center space-x-2" action="/join" method="POST">
             <div class="flex-grow">
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Your Email">
             </div>
+            <!--Submit button-->
             <div class="flex-shrink">
                 <button class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                     Join
                 </button>
             </div>
+            <!--Submit button end-->
         </form>
     </div>
+    <!--Join Us form end-->
+    <!--Footer-->
     <footer class="mt-8">
         <div class="text-center">
-            <a href="https://facebook.com" class="text-blue-600 hover:text-blue-800 mx-2">
+            <a href="#" class="text-blue-600 hover:text-blue-800 mx-2">
                 <i class="bi bi-facebook"></i>
             </a>
-            <a href="https://twitter.com" class="text-blue-400 hover:text-blue-600 mx-2">
+            <a href="#" class="text-blue-400 hover:text-blue-600 mx-2">
                 <i class="bi bi-twitter"></i>
             </a>
-            <a href="https://instagram.com" class="text-pink-600 hover:text-pink-800 mx-2">
+            <a href="#" class="text-pink-600 hover:text-pink-800 mx-2">
                 <i class="bi bi-instagram"></i>
             </a>
-            <a href="https://linkedin.com" class="text-blue-700 hover:text-blue-900 mx-2">
+            <a href="#" class="text-blue-700 hover:text-blue-900 mx-2">
                 <i class="bi bi-linkedin"></i>
             </a>
         </div>
     </footer>
+    <!--Footer end-->
 </body>
 </html>
