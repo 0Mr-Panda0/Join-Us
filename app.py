@@ -19,6 +19,11 @@ db = mysql.connector.connect(
 @app.route('/')
 def index():
     cursor = db.cursor()
+    cursor.execute('''
+                        CREATE TABLE IF NOT EXISTS users (
+                            id INT AUTO_INCREMENT PRIMARY KEY, 
+                            email VARCHAR(255))
+                   ''')
     cursor.execute("SELECT COUNT(*) FROM users")
     count = cursor.fetchone()[0]
     cursor.close()
