@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Join Us</h1>
+        <form class="flex items-center space-x-2" action="/join" method="POST">
+            <div class="flex-grow">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Your Email">
+            </div>
+            <div class="flex-shrink">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Join
+                </button>
+            </div>
+        </form>
+    </div>
+    <footer class="mt-8">
+        <div class="text-center">
+            <a href="https://facebook.com" class="text-blue-600 hover:text-blue-800 mx-2">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://twitter.com" class="text-blue-400 hover:text-blue-600 mx-2">
+                <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://instagram.com" class="text-pink-600 hover:text-pink-800 mx-2">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" class="text-blue-700 hover:text-blue-900 mx-2">
+                <i class="bi bi-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
