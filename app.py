@@ -18,7 +18,11 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def index():
-    return render_template('hello.html')
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT(*) FROM users")
+    count = cursor.fetchone()[0]
+    cursor.close()
+    return render_template('hello.html', count=count)
 
 @app.route('/join', methods=['POST'])
 def join():
