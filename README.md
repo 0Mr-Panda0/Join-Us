@@ -21,7 +21,7 @@ To get started with the project, clone the repository and run the `app.py`.
 ```sh
 git clone https://github.com/yourusername/join-us.git
 cd join-us
-python -r requirements.txt
+pip install -r requirements.txt
 python app.py
 ```
 
