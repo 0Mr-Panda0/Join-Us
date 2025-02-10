@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for
-import mysql.connector
+import sqlite3
 from dotenv import load_dotenv
 import os
 from faker import Faker
@@ -10,14 +10,9 @@ load_dotenv()
 app = Flask(__name__)
 fake = Faker()
 
-# Configure MySQL connection
-db = mysql.connector.connect(
-    host=os.getenv('HOST_NAME'),
-    port=os.getenv('PORT'),
-    user=os.getenv('USER_NAME'),
-    password=os.getenv('PASSWORD'),
-    database=os.getenv('DATABASE_NAME')
-)
+# Configure SQLite connection
+db_path = os.getenv('DATABASE_PATH', 'database.db')
+db = sqlite3.connect(db_path, check_same_thread=False)
 
 @app.route('/')
 def index():
@@ -25,16 +20,19 @@ def index():
     # Creating the users table if it doesn't exist
     cursor.execute('''
                         CREATE TABLE IF NOT EXISTS users (
-                            id INT AUTO_INCREMENT PRIMARY KEY, 
-                            email VARCHAR(255))
+                            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                            email TEXT)
                    ''')
-    # Inserting a fake email into the users table
-    for i in range(10):
-        cursor.execute("INSERT INTO users (email) VALUES (%s)", (fake.email(),))
-        db.commit()
-    # Fetching the number of users
+    # Fetching the number of users in the users table if no users are present then anywhere from 10-100 users are added else the number of users is fetched
     cursor.execute("SELECT COUNT(*) FROM users")
     count = cursor.fetchone()[0]
+    if count == 0:
+        # Inserting a fake email into the users table
+        for i in range(10):
+            cursor.execute("INSERT INTO users (email) VALUES (?)", (fake.email(),))
+            db.commit()
+        cursor.execute("SELECT COUNT(*) FROM users")
+        count = cursor.fetchone()[0]
     cursor.close()
     return render_template('hello.html', count=count)
 
@@ -44,7 +42,7 @@ def join():
     email = request.form['email']
     cursor = db.cursor()
     # Inserting the email into the users table
-    cursor.execute("INSERT INTO users (email) VALUES (%s)", (email,))
+    cursor.execute("INSERT INTO users (email) VALUES (?)", (email,))
     db.commit()
     cursor.close()
     return redirect(url_for('index'))
