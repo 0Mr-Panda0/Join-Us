@@ -1,16 +1,13 @@
-from dotenv import load_dotenv
 import sqlite3
-import os
 from faker import Faker
-
-
-# Load environment variables from .env file
-load_dotenv() 
+import os
 
 def configuring_database():
     # Configure SQLite connection
-    db_path = os.getenv('DB_PATH', 'database.db')
-    db = sqlite3.connect(db_path)
+    db_path = 'data/database.db'
+    if not os.path.exists(db_path):
+        os.mkdir('data')
+    db = sqlite3.connect(db_path, check_same_thread=False)
     return db
 
 # Creating the users table if it doesn't exist

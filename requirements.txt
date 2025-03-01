@@ -1,6 +1,5 @@
 Faker
 Flask
-python-dotenv
 invoke
 pytest
 pytest-cov
