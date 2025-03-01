@@ -8,6 +8,7 @@ def test_database_connection():
 
 
 def test_users_table_creation():
+    users_table_creation()
     db = configuring_database()
     table_name = "users"
     cursor = db.cursor()
