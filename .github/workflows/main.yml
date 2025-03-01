@@ -1,0 +1,34 @@
+name: CI Pipeline
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install invoke
+        run: pip install invoke
+      - name: Install dependencies
+        run: invoke install
+      - name: Set up SQLite
+        run: |
+          sudo apt-get install sqlite3
+          sqlite3 --version
+      - name: Lint code
+        run: invoke lint
+      - name: Run tests
+        env:
+          DATABASE_URL: sqlite:///$(pwd)/test.db
+        run: invoke test
+      - name: Format code
+        run: invoke design
