@@ -9,7 +9,6 @@ Welcome to the Join-Us project! This project is aimed at creating a web applicat
 ├── templates/
 │   └── hello.html
 ├── app.py
-├── create_table.sql
 ├── requirements.txt
 └── README.md
 ```
@@ -21,8 +20,10 @@ To get started with the project, clone the repository and run the `app.py`.
 ```sh
 git clone https://github.com/yourusername/join-us.git
 cd join-us
+python -m venv <virtual-envn>
+.\<virtual-envn>\Scripts\Activate.ps1
 pip install -r requirements.txt
-python app.py
+invoke run
 ```
 
 ## Contributing
@@ -42,6 +43,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or suggestions, please open an issue or contact me at [karan.behera366@gmail.com](mailto:email@example.com).
+For any questions or suggestions, please open an issue or contact me at [Karan_Behera](mailto:karan.behera366@gmail.com).
 
 Thank you for contributing to the Join-Us project!

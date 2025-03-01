@@ -3,3 +3,6 @@
 .env
 .db
 data
+__pycache__
+.pytest_cache
+.coverage
