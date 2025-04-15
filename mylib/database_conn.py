@@ -3,10 +3,14 @@ from faker import Faker
 import os
 
 def configuring_database():
+
     # Configure SQLite connection
     db_path = 'data/database.db'
+
+    # Check if the data directory exists, if not create it
     if not os.path.exists(db_path):
         os.mkdir('data')
+
     db = sqlite3.connect(db_path, check_same_thread=False)
     return db
 
