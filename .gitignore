@@ -1,6 +1,5 @@
 .venv
 .vscode
-.env
 .db
 data
 __pycache__
