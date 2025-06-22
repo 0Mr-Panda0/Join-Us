@@ -8,7 +8,9 @@ Welcome to the Join-Us project! This project is aimed at creating a web applicat
 ./Join-Us/
 ├── templates/
 │   └── hello.html
-├── app.py
+├── join_us/
+│   └── database_conn.py
+├── main.py
 ├── requirements.txt
 └── README.md
 ```
@@ -20,10 +22,9 @@ To get started with the project, clone the repository and run the `app.py`.
 ```sh
 git clone https://github.com/yourusername/join-us.git
 cd join-us
-python -m venv <virtual-envn>
-.\<virtual-envn>\Scripts\Activate.ps1
-pip install -r requirements.txt
-invoke run
+winget install --id=astral-sh.uv  -e
+uv add -r requirements.txt
+uv run invoke build
 ```
 
 ## Contributing
