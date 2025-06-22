@@ -8,7 +8,7 @@ def manage_dependency(c):
 
 @task
 def test_code(c):
-    c.run("uv run -m pytest -vv --cov=join_us test_main.py")
+    c.run("uv run -m pytest -vv --cov=src test/test_database_conn.py test/test_main.py")
 
 
 @task
