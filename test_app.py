@@ -1,4 +1,10 @@
-from mylib.database_conn import *
+from join_us.database_conn import (
+    configuring_database,
+    users_table_creation,
+    count_users,
+    insert_fake_email,
+    insert_email,
+)
 from faker import Faker
 
 

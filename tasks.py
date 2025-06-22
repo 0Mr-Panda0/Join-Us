@@ -2,25 +2,27 @@ from invoke import task
 
 
 @task
-def install(c):
-    c.run("python -m pip install --upgrade pip && pip install -r requirements.txt")
+def manage_dependency(c):
+    c.run("uv sync")
 
 
 @task
-def test(c):
-    c.run("python -m pytest -vv --cov=mylib test_app.py")
+def test_code(c):
+    c.run("uv run -m pytest -vv --cov=mylib test_app.py")
 
 
 @task
-def design(c):
-    c.run("black *.py")
+def lint_and_format_code(c):
+    c.run("uv run ruff check .")
+    c.run("uv run ruff check --fix .")
+    c.run("uv run ruff format .")
 
 
 @task
-def lint(c):
-    c.run("pylint --disable=R,C --ignore-patterns=test_.*?py *.py")
+def type_hints_check(c):
+    c.run("uv run mypy .")
 
 
-@task(pre=[install, test, design, lint])
-def run(c):
-    c.run("python app.py")
+@task(pre=[manage_dependency, test_code, lint_and_format_code, type_hints_check])
+def build(c):
+    c.run("uv run main.py")

@@ -3,5 +3,5 @@ Flask
 invoke
 pytest
 pytest-cov
-black
-pylint
+ruff
+mypy

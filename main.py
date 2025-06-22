@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for
-from mylib.database_conn import (
+from join_us.database_conn import (
     users_table_creation,
     count_users,
     insert_fake_email,
